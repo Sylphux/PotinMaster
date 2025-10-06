@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gossip team</title>
+    <title>User page</title>
 
     <!-- Lien Bootstrap CSS -->
     <link
@@ -13,20 +13,30 @@
     crossorigin="anonymous">
 </head>
 
-<body>
+<body class="text-center">
     <header>
         <nav>
             <div>
-                <a href="/welcome">Accueil</a>
+                <a class="nav-link" href="/welcome">Accueil</a>
                 <a class="nav-link" href="/team">Team</a>
                 <a class="nav-link" href="/contact">Contact</a>
-                <a class="nav-link" href="/profil">Profil Utilisateur</a>
+                <a class="nav-link" href="/welcome/1">Profil Utilisateur</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <h1>Bienvenue sur ta page profil !</h1>
+        <%if params[:name].scan(/[a-zA-Z]/).size == 0%>
+            <%found_user = User.find(params[:name].to_i)%>
+        <%else%>
+            <%found_user = User.where(first_name: params[:name]).first %>
+        <%end%>
+        <h1><%= "Bienvenue sur ta page profil #{found_user.first_name}" %></h1>
+        <a><%= "Ton nom de famille :  #{found_user.last_name}" %></a><br>
+        <a><%= "Ta ville :  #{found_user.city.city_name}" %></a><br>
+        <a><%= "Ton age :  #{found_user.age}" %></a><br>
+        <a><%= "Ton email :  #{found_user.email}" %></a><br>
+        <a><%= "Date de création de ton compte :  #{found_user.created_at}" %></a><br>
     </main>
 
 <!-- Script Bootstrap JS -->

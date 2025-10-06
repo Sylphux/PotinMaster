@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get '/contact', to: 'static#contact'
   get '/team', to: 'static#team'
   get '/gossip/:id', to: 'static#gossip'
-  get '/profil', to: 'static#profil'
+  get '/welcome/:name', to: 'static#profil'
 end

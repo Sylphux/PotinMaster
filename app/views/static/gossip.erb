@@ -13,14 +13,14 @@
     crossorigin="anonymous">
 </head>
 
-<body>
+<body class="text-center">
     <header>
         <nav>
             <div>
-                <a href="/welcome">Accueil</a>
+                <a class="nav-link" href="/welcome">Accueil</a>
                 <a class="nav-link" href="/team">Team</a>
                 <a class="nav-link" href="/contact">Contact</a>
-                <a class="nav-link" href="/profil">Profil Utilisateur</a>
+                <a class="nav-link" href="/welcome/1">Profil Utilisateur</a>
             </div>
         </nav>
     </header>
@@ -29,7 +29,9 @@
         <h1>Bienvenue sur la page gossip !</h1>
         <%= Gossip.find(params['id']).user.first_name%><br>
         <%= Gossip.find(params['id']).user.last_name%><br>
+        <a href= "/welcome/<%=Gossip.find(params['id']).user.id%>">Page de l'utilisateur</a><br>
         <%= Gossip.find(params['id']).content%><br>
+        <%= Gossip.find(params['id']).created_at%><br>
     </main>
 
 <!-- Script Bootstrap JS -->
