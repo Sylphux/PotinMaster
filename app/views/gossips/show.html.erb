@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Gossip contact</title>
+    </head>
+
+    <body>
+        <main>
+            <h1>Bienvenue sur la page gossip !</h1>
+            <%= Gossip.find(params['id']).user.first_name%><br>
+            <%= Gossip.find(params['id']).user.last_name%><br>
+            <a href= "/users/<%=Gossip.find(params['id']).user.id%>">Page de l'utilisateur</a><br>
+            <%= Gossip.find(params['id']).content%><br>
+            <%= Gossip.find(params['id']).created_at%><br>
+        </main>
+    </body>
+</html>

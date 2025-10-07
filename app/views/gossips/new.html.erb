@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Gossip contact</title>
+    </head>
+
+    <body>
+        <main>
+            <h1>Crée un potin !</h1>
+            <p>Balance ton potin via le formulaire ci-dessous</p>
+            <form action='/gossips/new/' method='POST'>
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                <input name="user_id" type="hidden" value="<% User.where(active_user: true).first.id %>">
+                Balance ton potin : <input type='text' name='gossip_content'/><br/>
+                <input type='submit'/>
+            </form>
+        </main>
+    </body>
+</html>

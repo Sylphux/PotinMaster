@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  def index  
+  def index
   end
 
   def team
@@ -7,11 +7,4 @@ class StaticController < ApplicationController
 
   def contact
   end
-
-  def gossip
-  end
-
-  def profil
-  end
-
 end
