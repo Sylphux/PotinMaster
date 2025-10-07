@@ -17,6 +17,17 @@ class GossipsController < ApplicationController
     # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
     # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
     # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
+    my_user = User.where(id: params['user_id'].to_i).first
+    yeslife = Gossip.new(content: params['gossip_content'], user_id: my_user.id, title: params['gossip_title'])
+    puts "##### on est dans le create"
+
+    if yeslife.title.present? && yeslife.content.present? && yeslife.save #vert
+      flash[:success] = "Done"  # Success message
+      redirect_to "/gossips/#{yeslife.id}", status: :see_other
+    else #rouge
+      flash[:error] = "Failed"  # Failure message
+    end
+
   end
 
   def edit

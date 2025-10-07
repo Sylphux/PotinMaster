@@ -9,11 +9,12 @@
         <main>
             <h1>Crée un potin !</h1>
             <p>Balance ton potin via le formulaire ci-dessous</p>
-            <form action='/gossips/new/' method='POST'>
+            <form action='/gossips/' method='POST'>
                 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-                <input name="user_id" type="hidden" value="<% User.where(active_user: true).first.id %>">
+                <input name="user_id" type="hidden" value="<%= User.where(active_user: true).first.id %>">
+                Titre du potin : <input type='text' name='gossip_title'/><br/>
                 Balance ton potin : <input type='text' name='gossip_content'/><br/>
-                <input type='submit'/>
+                <input type="submit" value="Valider">
             </form>
         </main>
     </body>
